@@ -1,0 +1,11 @@
+#lang racket
+(define (f n)
+  (cond ((< n 3) n)
+        ((or (> n 3) (= n 3))(+ (f (- n 1)) (* 2 (f (- n 2))) (* 3 (f (- n 3)))))))
+(define (f2 n)
+  (f2-iter 0 1 2 n))
+(define (f2-iter a b c count)
+  (cond ((= count 0) a)
+        ((= count 1) b)
+        ((= count 2) c)
+        ((or (> count 3) (= count 3)) (f2-iter b c (+ c (* 2 b) (* 3 a)) (- count 1)))))
